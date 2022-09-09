@@ -1,13 +1,13 @@
 import React from 'react';
 import { Col, Row } from 'antd';
-import { homePostsSelector } from 'store/selectors/posts';
+import actions from 'store/actions';
+import selectors from 'store/selectors';
 import { useSelector, useDispatch } from 'react-redux';
 import VerticalPostItem from 'components/VerticalPostItem';
-import actions from 'store/actions';
 
 interface Props {}
 const Home : React.FC<Props> = () => {
-  const posts = useSelector(homePostsSelector)
+  const posts = useSelector(selectors.posts.homePosts)
   const dispatch = useDispatch()
 
   React.useEffect(() => {
@@ -15,7 +15,6 @@ const Home : React.FC<Props> = () => {
   }, [])
 
   const fetchPosts = async () => {
-    console.log('fetching.....')
     dispatch(actions.posts.getHomePosts())
   }
 

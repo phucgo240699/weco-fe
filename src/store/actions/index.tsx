@@ -1,11 +1,8 @@
-import { getHomePosts, GET_HOME_POSTS } from './posts'
+import postsActions from './posts'
 
 
 const actions = {
-  posts: {
-    getHomePosts,
-    GET_HOME_POSTS
-  }
+  posts: postsActions
 }
 
 export default actions

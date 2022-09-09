@@ -1,3 +1,6 @@
 import { RootState } from "store";
 
-export const homePostsSelector = (state: RootState) => state.posts.homePosts
+const homePosts = (state: RootState) => state.posts.homePosts
+
+
+export default { homePosts }
