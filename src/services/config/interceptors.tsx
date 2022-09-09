@@ -1,7 +1,7 @@
 import {AxiosResponse, AxiosError, AxiosRequestConfig} from 'axios';
 
 export const responseInterceptor = (response: AxiosResponse) => {
-  return Promise.resolve(response.data);
+  return Promise.resolve(response.data.data);
 };
 
 export const errorInterceptor = (error: AxiosError) => {
