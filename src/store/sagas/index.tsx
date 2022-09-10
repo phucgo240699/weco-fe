@@ -1,4 +1,4 @@
-import postsSaga from "./posts"
+import postsSaga from "./postsSagas"
 import { fork } from 'redux-saga/effects'
 
 export default function* rootSaga() {

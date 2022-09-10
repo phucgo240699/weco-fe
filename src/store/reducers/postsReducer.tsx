@@ -1,9 +1,9 @@
-import { Post } from 'types/posts';
+import { PostType } from 'types/postsTypes';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface PostState {
-  homePosts: Post[]
+  homePosts: PostType[]
 }
 
 const initialState : PostState = {
@@ -14,10 +14,10 @@ export const postsReducer = createSlice({
   name: 'posts',
   initialState,
   reducers: {
-    adaptHomeScreenPosts: (state, action: PayloadAction<Post[]>) => {
+    adaptHomeScreenPosts: (state, action: PayloadAction<PostType[]>) => {
       state.homePosts = action.payload
     },
-    addHomeScreenPosts: (state, action: PayloadAction<Post[]>) => {
+    addHomeScreenPosts: (state, action: PayloadAction<PostType[]>) => {
       state.homePosts.push(...action.payload)
     }
   }

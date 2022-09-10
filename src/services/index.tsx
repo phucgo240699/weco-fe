@@ -1,5 +1,5 @@
-import users from './subServices/users'
-import posts from './subServices/posts'
+import users from './subServices/usersServices'
+import posts from './subServices/postsServices'
 
 const apiProvider = {
   users,

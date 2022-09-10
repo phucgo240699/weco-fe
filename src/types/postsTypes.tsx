@@ -4,7 +4,7 @@ export type PostAuthor = {
   avatarUrl?: string;
 }
 
-export type Post = {
+export type PostType = {
   id?: string;
   title?: string;
   thumbnailUrl?: string;

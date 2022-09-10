@@ -1,16 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Post } from "types/posts";
+import { PostType } from "types/postsTypes";
+import PrimaryText, { PrimaryTextType } from 'components/PrimaryText';
+import PrimaryImage from 'components/PrimaryImage';
 
 interface Props {
-  post: Post
+  post: PostType
 }
 
 const VerticalPostItem: React.FC<Props> = ({ post }) => {
   return (
     <Container>
       <Thumbnail src={post.thumbnailUrl} />
-      <Title>{post.title}</Title>
+      <PrimaryText type={PrimaryTextType.PostTile}>{post.title}</PrimaryText>
     </Container>
   )
 }
@@ -21,13 +23,8 @@ const Container = styled.div`
   padding-bottom: 40px;
 `
 
-const Thumbnail = styled.img`
+const Thumbnail = styled(PrimaryImage)`
   width: 100%;
-`
-
-const Title = styled.p`
-  font-size: 1.5rem;
-  font-weight: 700;
 `
 
 export default VerticalPostItem
