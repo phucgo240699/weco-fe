@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import PrimaryImage from 'components/PrimaryImage';
 import assetsPicker from 'assets/assetsPicker';
 import { ScreenRoutes } from 'constants/index';
+import PrimaryImage from 'components/PrimaryImage';
 
 interface Props {}
 

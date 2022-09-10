@@ -1,11 +1,11 @@
 import React from 'react';
-import HomeScreen from 'screens/home';
+import HomeScreen from 'screens/home/HomeScreen';
 import { ScreenRoutes } from 'constants/index';
 import PrimaryHeader from 'components/PrimaryHeader';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Suspense } from "react";
 
-const ProfileScreen = React.lazy(() => import('screens/profile'))
+const ProfileScreen = React.lazy(() => import('screens/profile/ProfileScreen'))
 
 function App() {
   return (

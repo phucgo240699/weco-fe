@@ -7,7 +7,7 @@ interface Props {
 
 const PrimaryImage: React.FC<Props> = ({src, style, ...otherProps}) => {
   return (
-    <img src={src} style={{ ...style, borderRadius: 10 }} {...otherProps} />
+    <img src={src} style={style} {...otherProps} />
   )
 }
 

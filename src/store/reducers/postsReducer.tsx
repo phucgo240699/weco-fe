@@ -3,11 +3,17 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface PostState {
-  homePosts: PostType[]
+  homePosts: {
+    data: PostType[],
+    isLoading: boolean
+  }
 }
 
 const initialState : PostState = {
-  homePosts: []
+  homePosts: {
+    data: [],
+    isLoading: false
+  }
 }
 
 export const postsReducer = createSlice({
@@ -15,14 +21,20 @@ export const postsReducer = createSlice({
   initialState,
   reducers: {
     adaptHomeScreenPosts: (state, action: PayloadAction<PostType[]>) => {
-      state.homePosts = action.payload
+      state.homePosts.data = action.payload
     },
     addHomeScreenPosts: (state, action: PayloadAction<PostType[]>) => {
-      state.homePosts.push(...action.payload)
+      state.homePosts.data.push(...action.payload)
+    },
+    showLoadingHomePosts: (state) => {
+      state.homePosts.isLoading = true
+    },
+    closeLoadingHomePosts: (state) => {
+      state.homePosts.isLoading = false
     }
   }
 })
 
-export const { adaptHomeScreenPosts, addHomeScreenPosts } = postsReducer.actions
+export const { adaptHomeScreenPosts, addHomeScreenPosts, showLoadingHomePosts, closeLoadingHomePosts } = postsReducer.actions
 
 export default postsReducer.reducer
