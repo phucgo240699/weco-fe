@@ -2,7 +2,7 @@ import React from 'react';
 import actions from 'store/actions';
 import styled from 'styled-components';
 import useGlobalSelector from 'store/selectors';
-import VerticalPostItem from 'screens/home/shared/VerticalPostItem/VerticalPostItem';
+import VerticalPostItem from 'components/VerticalPostItem';
 import assetsPicker from 'assets/assetsPicker';
 
 interface Props {}
