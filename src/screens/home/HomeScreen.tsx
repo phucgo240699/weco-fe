@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import actions from 'store/actions';
 import styled from 'styled-components';
 import useGlobalSelector from 'store/selectors';
@@ -15,8 +16,10 @@ const HomeScreen : React.FC<Props> = () => {
     fetchPosts()
   }, [])
 
-  const fetchPosts = async () => {
-    actions.posts.getHomePosts()
+  const fetchPosts = () => {
+    if (_.isEmpty(posts)) {
+      actions.posts.getHomePosts()
+    }
   }
 
   return (
@@ -51,7 +54,6 @@ const Content = styled.div`
 const LoadingPosts = styled.img`
   width: 50%;
   margin: auto;
-  background-color: #F0F2F5;
 `
 
 export default HomeScreen;

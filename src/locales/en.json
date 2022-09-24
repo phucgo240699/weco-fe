@@ -1,0 +1,8 @@
+{
+  "authentication": {
+    "signIn": {
+      "signIn": "Sign In",
+      "inCorrectLoginInfo": "Email or password is incorrect"
+    }
+  }
+}

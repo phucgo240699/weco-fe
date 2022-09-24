@@ -41,14 +41,20 @@ const getUrlWithQueryParams = (url: string, params?: any[]) => {
   return url;
 }
 
-const getRequest = ( url: string, params?: any[], headers: any = defaultHeader ) => {
+interface Props {
+  url: string;
+  params?: any[];
+  headers: any;
+}
+
+const getRequest = ({ url, params, headers = defaultHeader } : { url: string; params?: any[]; headers?: any; }) => {
   const queryUrl = getUrlWithQueryParams(url, params)
   return baseAxios.get(queryUrl, {
     headers
   });
 };
 
-const postRequest = ( url: string, params?: any[], body?: any, headers: any = defaultHeader ) => {
+const postRequest = ({ url, params, body, headers = defaultHeader } : { url: string, params?: any[], body?: any, headers?: any }) => {
   const queryUrl = getUrlWithQueryParams(url, params)
   return baseAxios.post(queryUrl, {
     data: body,
@@ -56,7 +62,7 @@ const postRequest = ( url: string, params?: any[], body?: any, headers: any = de
   });
 };
 
-const putRequest = ( url: string, params?: any[], body?: any, headers: any = defaultHeader ) => {
+const putRequest = ({ url, params, body, headers = defaultHeader } : { url: string, params?: any[], body?: any, headers?: any }) => {
   const queryUrl = getUrlWithQueryParams(url, params)
   return baseAxios.put(queryUrl, {
     data: body,
@@ -64,7 +70,7 @@ const putRequest = ( url: string, params?: any[], body?: any, headers: any = def
   });
 };
 
-const deleteRequest = ( url: string, params?: any[], body?: any, headers: any = defaultHeader ) => {
+const deleteRequest = ({ url, params, body, headers = defaultHeader } : { url: string, params?: any[], body?: any, headers?: any }) => {
   const queryUrl = getUrlWithQueryParams(url, params)
   return baseAxios.delete(queryUrl, {
     data: body,

@@ -11,12 +11,17 @@
     "@types/node": "^16.11.58",
     "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
+    "antd": "^4.23.2",
     "axios": "^0.27.2",
+    "i18next": "^21.9.2",
+    "lodash": "^4.17.21",
     "moment-timezone": "^0.5.37",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-i18next": "^11.18.6",
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.3.0",
+    "react-router-redux": "^4.0.8",
     "react-scripts": "5.0.1",
     "redux-saga": "^1.2.1",
     "styled-components": "^5.3.5",
@@ -48,6 +53,8 @@
     ]
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.185",
+    "@types/react-router-redux": "^5.0.21",
     "@types/styled-components": "^5.1.26"
   }
 }

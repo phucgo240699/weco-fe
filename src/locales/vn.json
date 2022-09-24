@@ -1,0 +1,8 @@
+{
+  "authentication": {
+    "signIn": {
+      "login": "Đăng nhập",
+      "inCorrectLoginInfo": "Email hoặc mật khẩu không chính xác"
+    }
+  }
+}
