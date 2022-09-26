@@ -1,5 +1,5 @@
 import postsActions from './postsActions'
-import authenticationActions from './authentication'
+import authenticationActions from './authenticationActions'
 
 const actions = {
   posts: postsActions,

@@ -4,5 +4,8 @@
       "signIn": "Sign In",
       "inCorrectLoginInfo": "Email or password is incorrect"
     }
+  },
+  "session": {
+    "loading": "Loading"
   }
 }

@@ -13,14 +13,10 @@ const HomeScreen : React.FC<Props> = () => {
   const isLoadingPosts = selectors.posts.homePosts.isLoading
 
   React.useEffect(() => {
-    fetchPosts()
-  }, [])
-
-  const fetchPosts = () => {
     if (_.isEmpty(posts)) {
       actions.posts.getHomePosts()
     }
-  }
+  }, [posts])
 
   return (
     <Container>

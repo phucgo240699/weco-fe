@@ -1,3 +1,4 @@
+import i18n from 'locales';
 import React from 'react';
 
 interface Props {
@@ -7,7 +8,7 @@ interface Props {
 
 const PrimaryImage: React.FC<Props> = ({src, style, ...otherProps}) => {
   return (
-    <img src={src} style={style} {...otherProps} />
+    <img alt={i18n.t('session.loading')} src={src} style={style} {...otherProps} />
   )
 }
 

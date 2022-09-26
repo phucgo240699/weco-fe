@@ -32,18 +32,22 @@ const SignInScreen = () => {
 
 const Container = styled.div`
   display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
-  width: 200px;
 `
 
-const EmailInput = styled.input``
-
-const PasswordInput = styled.input`
+const EmailInput = styled.input`
   margin-top: 10px;
 `
 
+const PasswordInput = styled.input`
+  margin-top: 4px;
+`
+
 const LoginButton = styled.button`
-  margin-top: 20px;
+  margin-top: 10px;
 `
 
 export default SignInScreen;

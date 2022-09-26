@@ -4,4 +4,6 @@ const getAll = async () => {
   return baseService.getRequest({ url: 'posts/getAll' })
 }
 
-export default { getAll }
+const postsServices = { getAll }
+
+export default postsServices;

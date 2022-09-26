@@ -4,5 +4,8 @@
       "login": "Đăng nhập",
       "inCorrectLoginInfo": "Email hoặc mật khẩu không chính xác"
     }
+  },
+  "session": {
+    "loading": "Đang tải"
   }
 }

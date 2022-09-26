@@ -1,25 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { ProfileType } from 'types/authenticationTypes';
+import { AuthContextType } from 'types/authenticationTypes';
 
 export interface AuthenticationState {
-  profile?: ProfileType
+  auth?: AuthContextType
 }
 
 const initialState : AuthenticationState = {
-  profile: undefined
+  auth: undefined
 }
 
 export const authenticationReducer = createSlice({
   name: 'authentication',
   initialState,
   reducers: {
-    updateProfile: (state, action: PayloadAction<ProfileType>) => {
-      state.profile = action.payload
+    signInSuccessfully: (state, action: PayloadAction<AuthContextType>) => {
+      state.auth = action.payload
     }
   }
 })
 
-export const { updateProfile } = authenticationReducer.actions
+export const { signInSuccessfully } = authenticationReducer.actions
 
 export default authenticationReducer.reducer

@@ -1,15 +1,17 @@
 import { store } from "store/index";
 import { SignInRequestType } from 'types/authenticationTypes';
 
-export const SIGN_IN = 'SIGN_IN'
-export const signIn = (body: SignInRequestType) => {
+const SIGN_IN = 'SIGN_IN'
+const signIn = (payload: SignInRequestType) => {
   store.dispatch({
     type: SIGN_IN,
-    payload: body
+    payload
   })
 }
 
-export default {
+const authenticationActions = {
   signIn,
   SIGN_IN
 }
+
+export default authenticationActions;
