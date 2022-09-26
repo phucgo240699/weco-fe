@@ -3,9 +3,32 @@
     "signIn": {
       "signIn": "Sign In",
       "inCorrectLoginInfo": "Email or password is incorrect"
+    },
+    "signOut": {
+      "signOut": "Sign out"
     }
   },
   "session": {
     "loading": "Loading"
+  },
+  "error": {
+    "internalServerError": "Internal server error"
+  },
+  "backend": {
+    "authentication": {
+      "missingRefreshToken": "Miss refresh token",
+      "expiredAccessToken": "access token has been expired",
+      "expiredRefreshToken": "refresh token has been expired",
+      "signIn": {
+        "incorrectInfo": "Sign in info is incorrect",
+        "hasNotVerifiedEmail": "Email has not been verified"
+      },
+      "signUp": {
+        "missingEmail": "Email is missing",
+        "missingPassword": "Password is missing",
+        "missingName": "Name is missing",
+        "existedEmail": "Email is existed"
+      }
+    }
   }
 }

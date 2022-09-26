@@ -5,17 +5,19 @@ import { ScreenRoutes } from 'constants/index';
 import { withTranslation } from 'react-i18next';
 import useGlobalSelector from 'store/selectors';
 import HomeScreen from 'screens/home/HomeScreen';
-import React, { Suspense } from 'react';
+import React, { Suspense, useLayoutEffect } from 'react';
 import PrimaryHeader from 'components/PrimaryHeader';
 import SignInScreen from 'screens/authentication/SignInScreen';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import actions from 'store/actions';
 
 const ProfileScreen = React.lazy(() => import('screens/profile/ProfileScreen'))
 
 const AuthComponent = ({ auth } : { auth: any }) => {
   return (
     <Routes>
-      <Route path={ScreenRoutes.SignIn} element={<SignInScreen />} />
+      <Route path={ScreenRoutes.SignIn} element={_.isNil(auth) ? <SignInScreen /> : <Navigate to={ScreenRoutes.Home} /> } />
       <Route path={ScreenRoutes.Home} element={_.isNil(auth) ? <Navigate to={ScreenRoutes.SignIn} /> : <HomeScreen />} />
       <Route path={ScreenRoutes.Profile} element={_.isNil(auth) ? <Navigate to={ScreenRoutes.SignIn} /> : <ProfileScreen />} />
     </Routes>
@@ -23,12 +25,17 @@ const AuthComponent = ({ auth } : { auth: any }) => {
 }
 
 function App() {
-  // const { auth } = useAuth();
   const selectors = useGlobalSelector();
+  const dispatch = useDispatch();
+  useLayoutEffect(() => {
+    dispatch(actions.authentication.signOut())
+  }, [])
 
   return (
     <BrowserRouter>
-      <PrimaryHeader />
+      {
+        !_.isNil(selectors.authentication.auth) && <PrimaryHeader />
+      }
       <Suspense fallback={<div>Loading...</div>}>
         <AuthComponent auth={selectors.authentication.auth} />
       </Suspense>

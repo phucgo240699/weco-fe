@@ -31,10 +31,20 @@ export const postsReducer = createSlice({
     },
     closeLoadingHomePosts: (state) => {
       state.homePosts.isLoading = false
+    },
+    clearPostsReducer: (state) => {
+      state.homePosts = {
+        data: [],
+        isLoading: false
+      }
     }
   }
 })
 
-export const { adaptHomeScreenPosts, addHomeScreenPosts, showLoadingHomePosts, closeLoadingHomePosts } = postsReducer.actions
+export const { adaptHomeScreenPosts,
+              addHomeScreenPosts,
+              showLoadingHomePosts,
+              closeLoadingHomePosts,
+              clearPostsReducer } = postsReducer.actions
 
 export default postsReducer.reducer

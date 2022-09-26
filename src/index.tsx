@@ -1,17 +1,18 @@
 import 'locales/index';
 import App from './App';
-import { store } from 'store';
+import { persistedStore, store } from 'store';
 import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom/client';
-import { AuthProvider } from 'contexts/AuthProvider';
+import { PersistGate } from 'redux-persist/integration/react'
+import Loader from 'components/Loader';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <AuthProvider>
-    <Provider store={store}>
+  <Provider store={store}>
+    <PersistGate loading={<Loader />} persistor={persistedStore}>
       <App />
-    </Provider>
-  </AuthProvider>
+    </PersistGate>
+  </Provider>
 );

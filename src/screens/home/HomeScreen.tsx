@@ -5,22 +5,25 @@ import styled from 'styled-components';
 import useGlobalSelector from 'store/selectors';
 import VerticalPostItem from 'components/VerticalPostItem';
 import assetsPicker from 'assets/assetsPicker';
+import { useDispatch } from 'react-redux';
 
 interface Props {}
 const HomeScreen : React.FC<Props> = () => {
   const selectors = useGlobalSelector()
+  const dispatch = useDispatch()
   const posts = selectors.posts.homePosts.data
   const isLoadingPosts = selectors.posts.homePosts.isLoading
 
   React.useEffect(() => {
     if (_.isEmpty(posts)) {
-      actions.posts.getHomePosts()
+      dispatch(actions.posts.getHomePosts())
     }
   }, [posts])
 
   return (
     <Container>
       <Content>
+        <RefreshButton onClick={() => dispatch(actions.posts.getHomePosts())}>Refresh</RefreshButton>
         {
           isLoadingPosts && <LoadingPosts src={assetsPicker.images.loading} />
         }
@@ -39,7 +42,17 @@ const Container = styled.div`
   margin: auto;
   display: flex;
   max-width: 700px;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
+`
+
+const RefreshButton = styled.button`
+  width: 100px;
+  display: flex;
+  margin-top: 20px;
+  align-self: flex-end;
+  justify-content: center;
 `
 
 const Content = styled.div`

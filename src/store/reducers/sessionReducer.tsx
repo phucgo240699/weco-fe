@@ -17,10 +17,13 @@ export const sessionReducer = createSlice({
     },
     closeLoader: (state) => {
       state.loading = false
+    },
+    clearSessionReducer: (state) => {
+      state.loading = false
     }
   }
 })
 
-export const { showLoader, closeLoader } = sessionReducer.actions
+export const { showLoader, closeLoader, clearSessionReducer } = sessionReducer.actions
 
 export default sessionReducer.reducer

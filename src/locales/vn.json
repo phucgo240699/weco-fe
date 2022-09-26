@@ -3,9 +3,32 @@
     "signIn": {
       "login": "Đăng nhập",
       "inCorrectLoginInfo": "Email hoặc mật khẩu không chính xác"
+    },
+    "signOut": {
+      "signOut": "Sign out"
     }
   },
   "session": {
     "loading": "Đang tải"
+  },
+  "error": {
+    "internalServerError": "Internal server error"
+  },
+  "backend": {
+    "authentication": {
+      "missingRefreshToken": "Thiếu refresh token",
+      "expiredAccessToken": "Access token đã hết hạn",
+      "expiredRefreshToken": "Refresh token has been expired",
+      "signIn": {
+        "incorrectInfo": "Thông tin đăng nhập không chính xác",
+        "hasNotVerifiedEmail": "Email chưa được xác thực"
+      },
+      "signUp": {
+        "missingEmail": "Thiếu thông tin email",
+        "missingPassword": "Thiếu thông tin mật khẩu",
+        "missingName": "Thiếu thông tin tên",
+        "existedEmail": "Email đã tồn tại"
+      }
+    }
   }
 }

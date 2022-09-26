@@ -1,11 +1,9 @@
-import { store } from "store/index";
-
 const GET_HOME_POSTS = 'GET_HOME_POSTS';
-const getHomePosts = () => (
-  store.dispatch({
+const getHomePosts = () => {
+  return {
     type: GET_HOME_POSTS
-  })
-)
+  }
+}
 
 const postsActions = {
   getHomePosts,

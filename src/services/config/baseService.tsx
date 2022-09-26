@@ -6,16 +6,16 @@ import {
   errorInterceptor,
   requestInterceptor,
 } from './interceptors';
+import _, { isNil } from 'lodash';
 
 const baseAxios = axios.create({
   baseURL: BASE_URL,
   validateStatus: function (status) {
     return (
       status === 200 || // Success
-      status === 400 || // Fail
+      status === 406 || // Not acceptable
       status === 401 || // Access token expired
-      status === 403 || // Refresh token expired
-      status === 500    // Crash error
+      status === 403 // Refresh token expired
     );
   }
 })
@@ -28,6 +28,18 @@ const defaultHeader = {
   'Content-Type': 'application/json',
   TimeZone: moment.tz.guess(),
 };
+
+const getFormatedHeaders = (headers: any) => {
+  const accessToken = _.get(headers, 'accessToken');
+  if (!isNil(accessToken)) {
+    delete headers.accessToken;
+    return {
+      ...headers,
+      Authorization: `Bearer ${accessToken}`
+    }
+  }
+  return headers
+}
 
 const getUrlWithQueryParams = (url: string, params?: any[]) => {
   if (params && params.length > 0) {
@@ -44,32 +56,40 @@ const getUrlWithQueryParams = (url: string, params?: any[]) => {
 const getRequest = ({ url, params, headers } : { url: string; params?: any[]; headers?: any; }) => {
   const queryUrl = getUrlWithQueryParams(url, params)
   return baseAxios.get(queryUrl, {
-    ...defaultHeader,
-    headers
+    headers: {
+      ...defaultHeader,
+      ...getFormatedHeaders(headers)
+    }
   });
 };
 
 const postRequest = ({ url, params, body, headers = defaultHeader } : { url: string, params?: any[], body?: any, headers?: any }) => {
   const queryUrl = getUrlWithQueryParams(url, params)
   return baseAxios.post(queryUrl, body, {
-    ...defaultHeader,
-    headers
+    headers: {
+      ...defaultHeader,
+      ...getFormatedHeaders(headers)
+    }
   });
 };
 
 const putRequest = ({ url, params, body, headers = defaultHeader } : { url: string, params?: any[], body?: any, headers?: any }) => {
   const queryUrl = getUrlWithQueryParams(url, params)
   return baseAxios.put(queryUrl, body, {
-    ...defaultHeader,
-    headers
+    headers: {
+      ...defaultHeader,
+      ...getFormatedHeaders(headers)
+    }
   });
 };
 
 const deleteRequest = ({ url, params, body, headers = defaultHeader } : { url: string, params?: any[], body?: any, headers?: any }) => {
   const queryUrl = getUrlWithQueryParams(url, params)
   return baseAxios.delete(queryUrl, {
-    ...defaultHeader,
-    headers
+    headers: {
+      ...defaultHeader,
+      ...getFormatedHeaders(headers)
+    }
   });
 };
 

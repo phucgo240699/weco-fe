@@ -1,15 +1,26 @@
-import { configureStore } from '@reduxjs/toolkit'
+import rootSaga from 'store/sagas'
 import createSagaMiddleware from 'redux-saga'
 import rootReducer from 'store/reducers/index'
-import rootSaga from 'store/sagas'
+import storage from 'redux-persist/lib/storage'
+import { configureStore } from '@reduxjs/toolkit'
+import { persistReducer, persistStore } from 'redux-persist'
 
 const sagaMiddleware = createSagaMiddleware()
 const middleware = [sagaMiddleware]
+const persistConfig = {
+  key: 'root',
+  storage,
+}
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: persistedReducer,
+  devTools: process.env.NODE_ENV === 'development',
   middleware
 })
+
+export const persistedStore = persistStore(store);
 
 sagaMiddleware.run(rootSaga)
 

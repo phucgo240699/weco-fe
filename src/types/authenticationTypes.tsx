@@ -3,10 +3,14 @@ export type SignInRequestType = {
   password: string;
 }
 
-export type AuthContextType = {
-  id: string;
-  accessToken: string;
+export type RefreshTokenRequestType = {
   refreshToken: string;
+}
+
+export type AuthType = {
+  id?: string;
+  accessToken?: string;
+  refreshToken?: string;
 }
 
 export type ProfileType = {
