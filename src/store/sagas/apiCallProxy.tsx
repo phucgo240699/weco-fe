@@ -8,8 +8,8 @@ import { updateAuth } from 'store/reducers/authentication';
 import actions from 'store/actions';
 
 export function* apiCallProxy(
-  fn: (({ payload, headers } : { payload?: any, headers?: any }) => Promise<AxiosResponse<any, any>>),
-  { payload } : { payload?: any }
+    fn: (({ payload, headers } : { payload?: any, headers?: any }) => Promise<AxiosResponse<any, any>>),
+    payload?: any
   ) : any {
   try {
     const auth = yield select(authSelector)

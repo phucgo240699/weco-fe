@@ -5,25 +5,28 @@ import styled from 'styled-components';
 import useGlobalSelector from 'store/selectors';
 import VerticalPostItem from 'components/VerticalPostItem';
 import assetsPicker from 'assets/assetsPicker';
-import { useDispatch } from 'react-redux';
+import { dispatcher } from 'store';
 
 interface Props {}
 const HomeScreen : React.FC<Props> = () => {
   const selectors = useGlobalSelector()
-  const dispatch = useDispatch()
   const posts = selectors.posts.homePosts.data
   const isLoadingPosts = selectors.posts.homePosts.isLoading
 
   React.useEffect(() => {
     if (_.isEmpty(posts)) {
-      dispatch(actions.posts.getHomePosts())
+      fetchPosts()
     }
   }, [posts])
+
+  const fetchPosts = () => {
+    dispatcher(actions.posts.getHomePosts())
+  }
 
   return (
     <Container>
       <Content>
-        <RefreshButton onClick={() => dispatch(actions.posts.getHomePosts())}>Refresh</RefreshButton>
+        <RefreshButton onClick={fetchPosts}>Refresh</RefreshButton>
         {
           isLoadingPosts && <LoadingPosts src={assetsPicker.images.loading} />
         }
@@ -61,7 +64,7 @@ const Content = styled.div`
 `
 
 const LoadingPosts = styled.img`
-  width: 50%;
+  width: 30%;
   margin: auto;
 `
 

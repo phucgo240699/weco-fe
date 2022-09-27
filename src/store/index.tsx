@@ -2,7 +2,7 @@ import rootSaga from 'store/sagas'
 import createSagaMiddleware from 'redux-saga'
 import rootReducer from 'store/reducers/index'
 import storage from 'redux-persist/lib/storage'
-import { configureStore } from '@reduxjs/toolkit'
+import { AnyAction, configureStore } from '@reduxjs/toolkit'
 import { persistReducer, persistStore } from 'redux-persist'
 
 const sagaMiddleware = createSagaMiddleware()
@@ -24,6 +24,9 @@ export const persistedStore = persistStore(store);
 
 sagaMiddleware.run(rootSaga)
 
+export const dispatcher = (action: AnyAction) => {
+  store.dispatch(action)
+}
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}

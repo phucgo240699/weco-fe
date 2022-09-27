@@ -11,7 +11,7 @@ import { apiCallProxy } from './apiCallProxy';
 function* getHomePosts() : any {
    try {
       yield(put(showLoadingHomePosts()))
-      const data = yield apiCallProxy(apiProvider.posts.getAll, {})
+      const data = yield apiCallProxy(apiProvider.posts.getAll)
       if (_.isNil(data)) return;
       yield put(adaptHomeScreenPosts(data))
       yield put(push(ScreenRoutes.Home))

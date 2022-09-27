@@ -2,11 +2,10 @@ import { useState } from "react"
 import styled from "styled-components"
 import { useTranslation } from 'react-i18next';
 import actions from "store/actions";
-import { useDispatch } from "react-redux";
+import { dispatcher } from "store";
 
 const SignInScreen = () => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -17,7 +16,7 @@ const SignInScreen = () => {
     setPassword(e.target.value)
   }
   const onPressSignIn = () => {
-    dispatch(actions.authentication.signIn({
+    dispatcher(actions.authentication.signIn({
       email,
       password
     }))

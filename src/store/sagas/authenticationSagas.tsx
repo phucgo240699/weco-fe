@@ -13,7 +13,7 @@ import { clearPostsReducer } from 'store/reducers/postsReducer';
 function* signInSaga({ payload } : { type: string, payload: SignInRequestType }) : any {
    try {
       yield put(showLoader())
-      const data = yield apiCallProxy(apiProvider.authentication.signIn, { payload })
+      const data = yield apiCallProxy(apiProvider.authentication.signIn, payload)
       if (_.isNil(data)) return;
       yield put(updateAuth(data))
       yield put(push(ScreenRoutes.Home))

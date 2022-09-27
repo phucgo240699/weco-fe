@@ -6,16 +6,15 @@ import assetsPicker from 'assets/assetsPicker';
 import { ScreenRoutes } from 'constants/index';
 import PrimaryImage from 'components/PrimaryImage';
 import actions from 'store/actions';
-import { useDispatch } from 'react-redux';
+import { dispatcher } from 'store';
 
 interface Props {}
 
 const PrimaryHeader: React.FC<Props> = () => {
   const { t } = useTranslation();
-  const dispatch = useDispatch()
 
   const onPressSignOut = () => {
-    dispatch(actions.authentication.signOut())
+    dispatcher(actions.authentication.signOut())
   }
 
   return (
