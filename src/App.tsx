@@ -1,15 +1,15 @@
 import _ from 'lodash';
+import { dispatch } from 'store';
+import actions from 'store/actions';
 import Loader from 'components/Loader';
 import { ScreenRoutes } from 'constants/index';
 import { withTranslation } from 'react-i18next';
 import useGlobalSelector from 'store/selectors';
 import HomeScreen from 'screens/home/HomeScreen';
-import React, { Suspense, useLayoutEffect } from 'react';
 import PrimaryHeader from 'components/PrimaryHeader';
+import React, { Suspense, useLayoutEffect } from 'react';
 import SignInScreen from 'screens/authentication/SignInScreen';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import actions from 'store/actions';
 
 const ProfileScreen = React.lazy(() => import('screens/profile/ProfileScreen'))
 
@@ -25,7 +25,6 @@ const AuthComponent = ({ auth } : { auth: any }) => {
 
 function App() {
   const selectors = useGlobalSelector();
-  const dispatch = useDispatch();
   useLayoutEffect(() => {
     dispatch(actions.authentication.signOut())
   }, [])

@@ -26,7 +26,7 @@ const HomeScreen : React.FC<Props> = () => {
   return (
     <Container>
       <Content>
-        <RefreshButton onClick={fetchPosts}>Refresh</RefreshButton>
+        <RefreshButton disabled={isLoadingPosts} onClick={fetchPosts}>Refresh</RefreshButton>
         {
           isLoadingPosts && <LoadingPosts src={assetsPicker.images.loading} />
         }

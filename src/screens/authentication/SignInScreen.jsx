@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import actions from "store/actions";
 import { dispatch } from "store";
 import assetsPicker from "assets/assetsPicker";
+import { colors } from "constants/index";
 
 const SignInScreen = () => {
   const { t } = useTranslation();
@@ -73,7 +74,7 @@ const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   height: 100%;
-  background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(97,186,255,1) 0%, rgba(166,239,253,1) 90.1% );
+  background-image: radial-gradient( circle farthest-corner at 10% 20%,  ${colors.Malibu.Rgb()} 0%, ${colors.Anakiwa.Rgb()} 90.1% );
 `
 
 const EmailInput = styled(Input)`
