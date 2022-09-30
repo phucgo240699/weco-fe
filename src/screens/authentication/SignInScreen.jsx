@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { useTranslation } from 'react-i18next';
 import actions from "store/actions";
 import { dispatcher } from "store";
+import logo from '../../assets/images/logo.png';
 
 const SignInScreen = () => {
   const { t } = useTranslation();
@@ -27,6 +28,8 @@ const SignInScreen = () => {
 
   return (
     <Container>
+      <Logo src={logo}>
+      </Logo>
       <Form>
         <Label>Email</Label>
         <EmailInput type={'email'} value={email} onChange={onChangeEmail} />
@@ -45,7 +48,8 @@ const Form = styled.form`
 `
 const Label = styled.label`
   font-size: 20px;
-  align-items: left
+  align-items: left;
+  color: white
 `
 const Input = styled.input`
   padding: 10px;
@@ -86,9 +90,11 @@ const LoginButton = styled(Button)`
   font-weight: bold;
   color: white;
   &:hover {
+    transition: 0.7s;
     background-color: #9688B3;
   }
   &:focus {
+    transition: 0.7s;
     background-color: #AC88B3;
   }
   &:active {
@@ -96,6 +102,25 @@ const LoginButton = styled(Button)`
   }
 `
 const SignUpButton = styled(Button)`
+  background-color: #494D5F;
+  color: white;
+  border: none;
+  font-weight: bold;
+  &:hover {
+    transition: 0.7s;
+    background-color: #58628D;
+  }
+  &:focus {
+    background-color: #69588D;
+  }
+  &:active {
+    background-color: #444C6D;
+  }
+`
+const Logo = styled.img`
+  height: 150px;
+  width: 150px;
+  border-radius: 10px;
 `
 
 export default SignInScreen;
