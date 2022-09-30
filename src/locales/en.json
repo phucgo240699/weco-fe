@@ -2,7 +2,13 @@
   "authentication": {
     "signIn": {
       "signIn": "Sign In",
+      "email": "Email",
+      "password": "Password",
       "inCorrectLoginInfo": "Email or password is incorrect"
+    },
+    "signUp": {
+      "signUp": "Sign Up",
+      "clickToSignUp": "Click here to sign up"
     },
     "signOut": {
       "signOut": "Sign out"

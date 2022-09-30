@@ -25,7 +25,7 @@ export function* apiCallProxy(
       case HttpStatusCode.Success:
         return data;
       case HttpStatusCode.NotAcceptable:
-        alert(i18n.t(errors[0]));
+        alert(i18n.t(`backend.${errors[0]}`));
         return;
       case HttpStatusCode.ExpiredAccessToken:
         const refreshTokenResult = yield call(apiProvider.authentication.refreshToken, { payload: { refreshToken: auth.refreshToken } })

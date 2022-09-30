@@ -31,13 +31,13 @@ const SignInScreen = () => {
       <Logo src={assetsPicker.images.signInLogo}>
       </Logo>
       <Form>
-        <Label>Email</Label>
+        <Label>{t('authentication.signIn.email')}</Label>
         <EmailInput type={'email'} value={email} onChange={onChangeEmail} />
-        <Label>Password</Label>
+        <Label>{t('authentication.signIn.password')}</Label>
         <PasswordInput type={'password'} value={password} onChange={onChangePassword} />
         <LoginButton onClick={onPressSignIn}>{t('authentication.signIn.signIn')}</LoginButton>
       </Form>
-      <SignUpButton onClick={onSignUpNavigation}>Click here to sign up</SignUpButton>
+      <SignUpButton onClick={onSignUpNavigation}>{t('authentication.signUp.clickToSignUp')}</SignUpButton>
     </Container>
   )
 }

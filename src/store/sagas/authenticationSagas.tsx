@@ -5,14 +5,15 @@ import { push } from 'react-router-redux';
 import { ScreenRoutes } from 'constants/index';
 import { SignInRequestType } from 'types/authenticationTypes';
 import { clearPostsReducer } from 'store/reducers/postsReducer';
-import { all, call, put, takeLeading } from 'redux-saga/effects';
+import { all, put, takeLeading } from 'redux-saga/effects';
 import { clearAuthenticationReducer, updateAuth } from 'store/reducers/authentication';
 import { clearSessionReducer, closeLoader, showLoader } from 'store/reducers/sessionReducer';
+import { apiCallProxy } from './apiCallProxy';
 
 function* signInSaga({ payload } : { type: string, payload: SignInRequestType }) : any {
    try {
       yield put(showLoader())
-      const data = yield call(apiProvider.authentication.signIn, { payload })
+      const data = yield apiCallProxy(apiProvider.authentication.signIn, payload)
       if (_.isNil(data)) return;
       yield put(updateAuth(data))
       yield put(push(ScreenRoutes.Home))

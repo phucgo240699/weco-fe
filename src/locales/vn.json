@@ -2,7 +2,13 @@
   "authentication": {
     "signIn": {
       "login": "Đăng nhập",
+      "email": "Email",
+      "password": "Mật khẩu",
       "inCorrectLoginInfo": "Email hoặc mật khẩu không chính xác"
+    },
+    "signUp": {
+      "signUp": "Đăng ký",
+      "clickToSignUp": "Nhấp vào đây để đăng ký"
     },
     "signOut": {
       "signOut": "Sign out"

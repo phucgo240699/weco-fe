@@ -1,5 +1,4 @@
 import _ from 'lodash';
-// import useAuth from 'hooks/useAuth';
 import Loader from 'components/Loader';
 import { ScreenRoutes } from 'constants/index';
 import { withTranslation } from 'react-i18next';
@@ -36,7 +35,7 @@ function App() {
       {
         !_.isNil(selectors.authentication.auth) && <PrimaryHeader />
       }
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         <AuthComponent auth={selectors.authentication.auth} />
       </Suspense>
       {
