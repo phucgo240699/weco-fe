@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import useGlobalSelector from 'store/selectors';
 import VerticalPostItem from 'components/VerticalPostItem';
 import assetsPicker from 'assets/assetsPicker';
-import { dispatcher } from 'store';
+import { dispatch } from 'store';
 
 interface Props {}
 const HomeScreen : React.FC<Props> = () => {
@@ -20,7 +20,7 @@ const HomeScreen : React.FC<Props> = () => {
   }, [posts])
 
   const fetchPosts = () => {
-    dispatcher(actions.posts.getHomePosts())
+    dispatch(actions.posts.getHomePosts())
   }
 
   return (

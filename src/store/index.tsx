@@ -24,7 +24,7 @@ export const persistedStore = persistStore(store);
 
 sagaMiddleware.run(rootSaga)
 
-export const dispatcher = (action: AnyAction) => {
+export const dispatch = (action: AnyAction) => {
   store.dispatch(action)
 }
 // Infer the `RootState` and `AppDispatch` types from the store itself

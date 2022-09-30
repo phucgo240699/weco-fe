@@ -1,8 +1,8 @@
 import baseService from 'services/config/baseService'
 import { RefreshTokenRequestType, SignInRequestType } from 'types/authenticationTypes'
 
-const signIn = async ({ payload, headers } : { payload?: SignInRequestType, headers?: any }) => {
-  return baseService.postRequest({ url: 'users/signIn', body: payload, headers })
+const signIn = async ({ payload } : { payload?: SignInRequestType }) => {
+  return baseService.postRequest({ url: 'users/signIn', body: payload })
 }
 
 const signUp = async () => {

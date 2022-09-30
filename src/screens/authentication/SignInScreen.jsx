@@ -2,8 +2,8 @@ import { useState } from "react"
 import styled from "styled-components"
 import { useTranslation } from 'react-i18next';
 import actions from "store/actions";
-import { dispatcher } from "store";
-import logo from '../../assets/images/logo.png';
+import { dispatch } from "store";
+import assetsPicker from "assets/assetsPicker";
 
 const SignInScreen = () => {
   const { t } = useTranslation();
@@ -17,7 +17,7 @@ const SignInScreen = () => {
     setPassword(e.target.value)
   }
   const onPressSignIn = () => {
-    dispatcher(actions.authentication.signIn({
+    dispatch(actions.authentication.signIn({
       email,
       password
     }))
@@ -28,7 +28,7 @@ const SignInScreen = () => {
 
   return (
     <Container>
-      <Logo src={logo}>
+      <Logo src={assetsPicker.images.signInLogo}>
       </Logo>
       <Form>
         <Label>Email</Label>
@@ -41,7 +41,7 @@ const SignInScreen = () => {
     </Container>
   )
 }
-const Form = styled.form`
+const Form = styled.div`
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
