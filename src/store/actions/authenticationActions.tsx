@@ -1,4 +1,4 @@
-import { SignInRequestType } from 'types/authenticationTypes';
+import { SignInRequestType, SignUpRequestType } from 'types/authenticationTypes';
 
 const SIGN_IN = 'SIGN_IN'
 const signIn = (payload: SignInRequestType) => {
@@ -15,11 +15,21 @@ const signOut = () => {
   }
 }
 
+const SIGN_UP = 'SIGN_UP'
+const signUp = (payload: SignUpRequestType) => {
+  return {
+    type: SIGN_UP,
+    payload
+  }
+}
+
 const authenticationActions = {
   signIn,
   signOut,
+  signUp,
   SIGN_IN,
-  SIGN_OUT
+  SIGN_OUT,
+  SIGN_UP
 }
 
 export default authenticationActions;

@@ -3,6 +3,12 @@ export type SignInRequestType = {
   password: string;
 }
 
+export type SignUpRequestType = {
+  email: string;
+  name: string;
+  password: string;
+}
+
 export type RefreshTokenRequestType = {
   refreshToken: string;
 }
