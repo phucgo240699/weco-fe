@@ -5,16 +5,18 @@ import actions from "store/actions";
 import { dispatch } from "store";
 import assetsPicker from "assets/assetsPicker";
 import { colors } from "constants/index";
+import { ScreenRoutes } from 'constants/index';
+import { Link } from 'react-router-dom';
 
 const SignInScreen = () => {
   const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const onChangeEmail = (e) => {
+  const onChangeEmail = (e: any) => {
     setEmail(e.target.value)
   }
-  const onChangePassword = (e) => {
+  const onChangePassword = (e: any) => {
     setPassword(e.target.value)
   }
   const onPressSignIn = () => {
@@ -22,9 +24,6 @@ const SignInScreen = () => {
       email,
       password
     }))
-  }
-  const onSignUpNavigation = () => {
-    console.log('test')
   }
 
   return (
@@ -38,7 +37,10 @@ const SignInScreen = () => {
         <PasswordInput type={'password'} value={password} onChange={onChangePassword} />
         <LoginButton onClick={onPressSignIn}>{t('authentication.signIn.signIn')}</LoginButton>
       </Form>
-      <SignUpButton onClick={onSignUpNavigation}>{t('authentication.signUp.clickToSignUp')}</SignUpButton>
+      <Link to={ScreenRoutes.SignUp}>
+        <SignUpButton>{t('authentication.signUp.clickToSignUp')}</SignUpButton>
+      </Link>
+      
     </Container>
   )
 }
