@@ -36,10 +36,25 @@ function* signOutSaga() : any {
    }
 }
 
+function* signUpSaga({ payload } : { type: string, payload: SignInRequestType }) : any {
+   try {
+      yield put(showLoader())
+      console.log('signUpSaga')
+      const data = yield apiCallProxy(apiProvider.authentication.signUp, payload)
+      if (_.isNil(data)) return;
+      yield put(push(ScreenRoutes.SignIn))
+   } catch (e) {
+      _.noop()
+   } finally {
+      yield put(closeLoader())
+   }
+}
+
 function* authenticationSaga() {
   yield all([
    takeLeading(actions.authentication.SIGN_IN, signInSaga),
-   takeLeading(actions.authentication.SIGN_OUT, signOutSaga)
+   takeLeading(actions.authentication.SIGN_OUT, signOutSaga),
+   takeLeading(actions.authentication.SIGN_UP, signUpSaga)
   ])
 }
 
