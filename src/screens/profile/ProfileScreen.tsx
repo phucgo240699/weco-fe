@@ -1,12 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { dispatch } from 'store';
+import styled from 'styled-components';
 import { ScreenRoutes } from 'constants/index';
+import { navigateTo } from 'store/reducers/sessionReducer';
 
 interface Props {}
 const ProfileScreen : React.FC<Props> = () => {
+  const onPressBackToHome = () => {
+    dispatch(navigateTo({ path: ScreenRoutes.Home }))
+  }
   return (
-    <Link to={ScreenRoutes.Home}>Back to Home</Link>
+    <BackButton onClick={onPressBackToHome}>Back to Home</BackButton>
   )
 }
+
+const BackButton = styled.button``
 
 export default ProfileScreen;

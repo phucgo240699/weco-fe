@@ -1,18 +1,11 @@
-import { Button, Checkbox, Form, Input, Col, Row } from 'antd';
-import { SignUpRequestType } from 'types/authenticationTypes'
-import styled from "styled-components"
 import React from 'react';
-import { useState } from "react"
 import { dispatch } from 'store';
 import actions from 'store/actions';
+import styled from "styled-components";
+import { Button, Form, Input, Col, Row } from 'antd';
 
 interface Props {}
 const SignUpScreen : React.FC<Props> = () => {
-  const [user, setUser] = useState<SignUpRequestType>({
-    email: '',
-    name: '',
-    password: ''
-  });
 
   const onFormSubmit = (e: any) => {
     dispatch(actions.authentication.signUp({

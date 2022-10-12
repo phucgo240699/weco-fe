@@ -1,12 +1,12 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
+ import React from 'react';
+ import { dispatch } from 'store';
+ import actions from 'store/actions';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import assetsPicker from 'assets/assetsPicker';
 import { ScreenRoutes } from 'constants/index';
+import { useTranslation } from 'react-i18next';
 import PrimaryImage from 'components/PrimaryImage';
-import actions from 'store/actions';
-import { dispatch } from 'store';
+import { navigateTo } from 'store/reducers/sessionReducer';
 
 interface Props {}
 
@@ -17,11 +17,15 @@ const PrimaryHeader: React.FC<Props> = () => {
     dispatch(actions.authentication.signOut())
   }
 
+  const onPressProfileIcon = () => {
+    dispatch(navigateTo({ path: ScreenRoutes.Profile }))
+  }
+
   return (
     <Container>
-      <Link to={ScreenRoutes.Profile}>
+      <ProfileButton onClick={onPressProfileIcon}>
         <ProfileIcon src={assetsPicker.images.profileIcon} />
-      </Link>
+      </ProfileButton>
       <SignOut onClick={onPressSignOut}>{t('authentication.signOut.signOut')}</SignOut>
     </Container>
   )
@@ -36,6 +40,8 @@ const Container = styled.div`
   justify-content: flex-end;
   background-color: #246EF6;
 `
+
+const ProfileButton = styled.button``
 
 const ProfileIcon = styled(PrimaryImage)`
   width: 36px;

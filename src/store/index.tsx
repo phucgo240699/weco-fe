@@ -2,8 +2,9 @@ import rootSaga from 'store/sagas'
 import createSagaMiddleware from 'redux-saga'
 import rootReducer from 'store/reducers/index'
 import storage from 'redux-persist/lib/storage'
-import { AnyAction, configureStore } from '@reduxjs/toolkit'
+import { routerReducer } from 'react-router-redux'
 import { persistReducer, persistStore } from 'redux-persist'
+import { AnyAction, combineReducers, configureStore } from '@reduxjs/toolkit'
 
 const sagaMiddleware = createSagaMiddleware()
 const middleware = [sagaMiddleware]
@@ -12,16 +13,24 @@ const persistConfig = {
   storage,
 }
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+// Reducer
+const combinedReducers = combineReducers({
+  ...rootReducer,
+  routing: routerReducer
+})
+const persistedReducer = persistReducer(persistConfig, combinedReducers)
 
+// Init store
 export const store = configureStore({
   reducer: persistedReducer,
   devTools: process.env.NODE_ENV === 'development',
   middleware
 })
 
+// persistedStore
 export const persistedStore = persistStore(store);
 
+// Run saga
 sagaMiddleware.run(rootSaga)
 
 export const dispatch = (action: AnyAction) => {

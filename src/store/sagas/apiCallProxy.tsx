@@ -4,7 +4,7 @@ import { authSelector } from "store/selectors";
 import { call, put, select } from "redux-saga/effects";
 import { HttpStatusCode } from "constants/index";
 import apiProvider from 'services';
-import { updateAuth } from 'store/reducers/authentication';
+import { updateAuth } from 'store/reducers/authenticationReducer';
 import actions from 'store/actions';
 
 export function* apiCallProxy(
@@ -23,7 +23,7 @@ export function* apiCallProxy(
 
     switch (status) {
       case HttpStatusCode.Success:
-        return data;
+        return { data };
       case HttpStatusCode.NotAcceptable:
         alert(i18n.t(`backend.${errors[0]}`));
         return;

@@ -6,7 +6,7 @@ import { dispatch } from "store";
 import assetsPicker from "assets/assetsPicker";
 import { colors } from "constants/index";
 import { ScreenRoutes } from 'constants/index';
-import { Link } from 'react-router-dom';
+import { navigateTo } from "store/reducers/sessionReducer";
 
 const SignInScreen = () => {
   const { t } = useTranslation();
@@ -25,6 +25,9 @@ const SignInScreen = () => {
       password
     }))
   }
+  const onPressSignUp = () => {
+    dispatch(navigateTo({ path: ScreenRoutes.SignUp }))
+  }
 
   return (
     <Container>
@@ -37,10 +40,7 @@ const SignInScreen = () => {
         <PasswordInput type={'password'} value={password} onChange={onChangePassword} />
         <LoginButton onClick={onPressSignIn}>{t('authentication.signIn.signIn')}</LoginButton>
       </Form>
-      <Link to={ScreenRoutes.SignUp}>
-        <SignUpButton>{t('authentication.signUp.clickToSignUp')}</SignUpButton>
-      </Link>
-      
+      <SignUpButton onClick={onPressSignUp}>{t('authentication.signUp.clickToSignUp')}</SignUpButton>
     </Container>
   )
 }

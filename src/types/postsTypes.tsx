@@ -1,11 +1,11 @@
 export type PostAuthor = {
-  id?: string;
+  _id?: string;
   name?: string;
   avatarUrl?: string;
 }
 
 export type PostType = {
-  id?: string;
+  _id?: string;
   title?: string;
   thumbnailUrl?: string;
   author?: PostAuthor;
