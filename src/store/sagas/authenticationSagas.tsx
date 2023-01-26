@@ -6,7 +6,7 @@ import { clearPostsReducer } from 'store/reducers/postsReducer';
 import { all, call, put, takeLeading } from 'redux-saga/effects';
 import { SignInRequestType, SignUpRequestType } from 'types/authenticationTypes';
 import { clearAuthenticationReducer, updateAuth } from 'store/reducers/authenticationReducer';
-import { clearSessionReducer, closeLoader, navigateTo, showLoader } from 'store/reducers/sessionReducer';
+import { clearSessionReducer, closeLoader, showLoader } from 'store/reducers/sessionReducer';
 
 function* signInSaga({ payload } : { type: string, payload: SignInRequestType }) : any {
    try {
@@ -14,7 +14,7 @@ function* signInSaga({ payload } : { type: string, payload: SignInRequestType })
       const { data } = yield call(apiProvider.authentication.signIn, { payload })
       if (_.isNil(data)) return;
       yield put(updateAuth(data))
-      yield put(navigateTo({ path: ScreenRoutes.Home }))
+      payload.navigate?.(ScreenRoutes.Home)
    } catch (e) {
       _.noop()
    } finally {
@@ -37,10 +37,9 @@ function* signOutSaga() : any {
 function* signUpSaga({ payload } : { type: string, payload: SignUpRequestType }) : any {
    try {
       yield put(showLoader())
-      console.log('signUpSaga')
       const { data } = yield call(apiProvider.authentication.signUp, { payload })
       if (_.isNil(data)) return;
-      yield put(navigateTo({ path: ScreenRoutes.SignIn }))
+      payload.navigate?.(ScreenRoutes.SignIn)
    } catch (e) {
       _.noop()
    } finally {

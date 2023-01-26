@@ -6,10 +6,11 @@ import { dispatch } from "store";
 import assetsPicker from "assets/assetsPicker";
 import { colors } from "constants/index";
 import { ScreenRoutes } from 'constants/index';
-import { navigateTo } from "store/reducers/sessionReducer";
+import { useNavigate } from "react-router-dom";
 
 const SignInScreen = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -22,11 +23,12 @@ const SignInScreen = () => {
   const onPressSignIn = () => {
     dispatch(actions.authentication.signIn({
       email,
-      password
+      password,
+      navigate: navigate
     }))
   }
   const onPressSignUp = () => {
-    dispatch(navigateTo({ path: ScreenRoutes.SignUp }))
+    navigate(ScreenRoutes.SignUp)
   }
 
   return (

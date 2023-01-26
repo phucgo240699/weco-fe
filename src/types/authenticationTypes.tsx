@@ -1,12 +1,16 @@
+import { NavigateFunction } from "react-router-dom";
+
 export type SignInRequestType = {
   email: string;
   password: string;
+  navigate?: NavigateFunction;
 }
 
 export type SignUpRequestType = {
   email: string;
   name: string;
   password: string;
+  navigate?: NavigateFunction;
 }
 
 export type RefreshTokenRequestType = {

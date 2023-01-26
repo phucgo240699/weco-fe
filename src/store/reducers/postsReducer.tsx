@@ -47,4 +47,6 @@ export const { adaptHomeScreenPosts,
               closeLoadingHomePosts,
               clearPostsReducer } = postsReducer.actions
 
+export const postsSlices = postsReducer.actions
+
 export default postsReducer.reducer

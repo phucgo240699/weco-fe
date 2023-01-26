@@ -3,15 +3,17 @@ import { dispatch } from 'store';
 import actions from 'store/actions';
 import styled from "styled-components";
 import { Button, Form, Input, Col, Row } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {}
 const SignUpScreen : React.FC<Props> = () => {
-
+  const navigate = useNavigate();
   const onFormSubmit = (e: any) => {
     dispatch(actions.authentication.signUp({
       email: e.email,
       name: e.name,
-      password: e.password
+      password: e.password,
+      navigate: navigate
     }))
   }
     return (

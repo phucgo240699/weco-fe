@@ -25,4 +25,6 @@ export const authenticationReducer = createSlice({
 
 export const { updateAuth, clearAuthenticationReducer } = authenticationReducer.actions
 
+export const authenticationSlices = authenticationReducer.actions
+
 export default authenticationReducer.reducer

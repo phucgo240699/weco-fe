@@ -1,5 +1,4 @@
 import React from 'react';
-import './index.css';
 import styled from 'styled-components';
 import { PostType } from "types/postsTypes";
 import PrimaryImage from 'components/PrimaryImage';

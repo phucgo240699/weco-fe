@@ -5,20 +5,21 @@ import styled from 'styled-components';
 import assetsPicker from 'assets/assetsPicker';
 import { ScreenRoutes } from 'constants/index';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import PrimaryImage from 'components/PrimaryImage';
-import { navigateTo } from 'store/reducers/sessionReducer';
 
 interface Props {}
 
 const PrimaryHeader: React.FC<Props> = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const onPressSignOut = () => {
     dispatch(actions.authentication.signOut())
   }
 
   const onPressProfileIcon = () => {
-    dispatch(navigateTo({ path: ScreenRoutes.Profile }))
+    navigate(ScreenRoutes.Profile)
   }
 
   return (
