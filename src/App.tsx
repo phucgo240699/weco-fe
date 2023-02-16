@@ -1,13 +1,11 @@
 import _ from 'lodash';
-import { dispatch } from 'store';
-import actions from 'store/actions';
 import Loader from 'components/Loader';
 import { ScreenRoutes } from 'constants/index';
 import { withTranslation } from 'react-i18next';
-import useGlobalSelector from 'store/selectors';
+import useRootSelector from 'store/selectors';
 import HomeScreen from 'screens/home/HomeScreen';
 import PrimaryHeader from 'components/PrimaryHeader';
-import React, { Suspense, useLayoutEffect } from 'react';
+import React, { Suspense } from 'react';
 import SignInScreen from 'screens/authentication/SignInScreen';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
@@ -26,10 +24,7 @@ const AuthComponent = ({ auth } : { auth: any }) => {
 }
 
 function App() {
-  const selectors = useGlobalSelector();
-  useLayoutEffect(() => {
-    dispatch(actions.authentication.signOut())
-  }, [])
+  const selectors = useRootSelector();
 
   return (
     <BrowserRouter>

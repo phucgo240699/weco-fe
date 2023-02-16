@@ -2,14 +2,14 @@ import React from 'react';
 import _ from 'lodash';
 import actions from 'store/actions';
 import styled from 'styled-components';
-import useGlobalSelector from 'store/selectors';
+import useRootSelector from 'store/selectors';
 import VerticalPostItem from 'components/VerticalPostItem';
 import assetsPicker from 'assets/assetsPicker';
 import { dispatch } from 'store';
 
 interface Props {}
 const HomeScreen : React.FC<Props> = () => {
-  const selectors = useGlobalSelector()
+  const selectors = useRootSelector()
   const posts = selectors.posts.homePosts.data
   const isLoadingPosts = selectors.posts.homePosts.isLoading
 
