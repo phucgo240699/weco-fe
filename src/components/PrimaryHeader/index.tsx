@@ -2,56 +2,62 @@
  import { dispatch } from 'store';
  import actions from 'store/actions';
 import styled from 'styled-components';
-import assetsPicker from 'assets/assetsPicker';
-import { ScreenRoutes } from 'constants/index';
+import { PageRoutes } from 'constants/index';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import PrimaryImage from 'components/PrimaryImage';
+import { Button, Dropdown, MenuProps } from 'antd';
+import MenuOutlined from '@ant-design/icons/MenuOutlined';
 
 interface Props {}
 
 const PrimaryHeader: React.FC<Props> = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const items: MenuProps['items'] = [
+    {
+      key: '0',
+      label: (
+        <div>{t('profile.myProfile')}</div>
+      ),
+      onClick() {
+        onPressMyProfile()
+      }
+    },
+    {
+      key: '1',
+      label: (
+        <Button danger type='text'>{t('authentication.signOut.signOut')}</Button>
+      ),
+      onClick() {
+        onPressSignOut()
+      }
+    }
+  ]
 
   const onPressSignOut = () => {
     dispatch(actions.authentication.signOut())
   }
 
-  const onPressProfileIcon = () => {
-    navigate(ScreenRoutes.Profile)
+  const onPressMyProfile = () => {
+    navigate(PageRoutes.Profile)
   }
 
   return (
     <Container>
-      <ProfileButton onClick={onPressProfileIcon}>
-        <ProfileIcon src={assetsPicker.images.profileIcon} />
-      </ProfileButton>
-      <SignOut onClick={onPressSignOut}>{t('authentication.signOut.signOut')}</SignOut>
+      <Dropdown menu={{ items }} placement='bottomLeft'>
+        <Button type='primary' icon={<MenuOutlined />} />
+      </Dropdown>
     </Container>
   )
 }
 
 const Container = styled.div`
   width: 100%;
-  height: 60px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  background-color: #246EF6;
-`
-
-const ProfileButton = styled.button``
-
-const ProfileIcon = styled(PrimaryImage)`
-  width: 36px;
-  height: 36px;
-  margin-right: 1vw;
-`
-
-const SignOut = styled.button`
-
+  padding: 20px;
 `
 
 export default PrimaryHeader

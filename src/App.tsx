@@ -1,24 +1,24 @@
 import _ from 'lodash';
 import Loader from 'components/Loader';
-import { ScreenRoutes } from 'constants/index';
+import { PageRoutes } from 'constants/index';
 import { withTranslation } from 'react-i18next';
 import useRootSelector from 'store/selectors';
-import HomeScreen from 'screens/home/HomeScreen';
+import HomePage from 'screens/home/HomePage';
 import PrimaryHeader from 'components/PrimaryHeader';
 import React, { Suspense } from 'react';
-import SignInScreen from 'screens/authentication/SignInScreen';
+import SignInPage from 'screens/authentication/SignInPage';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
-const ProfileScreen = React.lazy(() => import('screens/profile/ProfileScreen'))
-const SignUpScreen = React.lazy(() => import('screens/authentication/SignUpScreen'))
+const ProfilePage = React.lazy(() => import('screens/profile/ProfilePage'))
+const SignUpPage = React.lazy(() => import('screens/authentication/SignUpPage'))
 
 const AuthComponent = ({ auth } : { auth: any }) => {
   return (
     <Routes>
-      <Route path={ScreenRoutes.SignIn} element={<SignInScreen />} />
-      <Route path={ScreenRoutes.Home} element={_.isNil(auth) ? <Navigate to={ScreenRoutes.SignIn} /> : <HomeScreen />} />
-      <Route path={ScreenRoutes.Profile} element={_.isNil(auth) ? <Navigate to={ScreenRoutes.SignIn} /> : <ProfileScreen />} />
-      <Route path={ScreenRoutes.SignUp} element={<SignUpScreen />} />
+      <Route path={PageRoutes.SignIn} element={<SignInPage />} />
+      <Route path={PageRoutes.Home} element={_.isNil(auth) ? <Navigate to={PageRoutes.SignIn} /> : <HomePage />} />
+      <Route path={PageRoutes.Profile} element={_.isNil(auth) ? <Navigate to={PageRoutes.SignIn} /> : <ProfilePage />} />
+      <Route path={PageRoutes.SignUp} element={<SignUpPage />} />
     </Routes>
   )
 }

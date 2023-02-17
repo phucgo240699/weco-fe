@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import apiProvider from 'services';
 import actions from 'store/actions';
-import { ScreenRoutes } from 'constants/index';
+import { PageRoutes } from 'constants/index';
 import { clearPostsReducer } from 'store/reducers/postsReducer';
 import { all, call, put, takeLeading } from 'redux-saga/effects';
 import { SignInRequestType, SignUpRequestType } from 'types/authenticationTypes';
@@ -14,7 +14,7 @@ function* signInSaga({ payload } : { type: string, payload: SignInRequestType })
       const { data } = yield call(apiProvider.authentication.signIn, { payload })
       if (_.isNil(data)) return;
       yield put(updateAuth(data))
-      payload.navigate?.(ScreenRoutes.Home)
+      payload.navigate?.(PageRoutes.Home)
    } catch (e) {
       _.noop()
    } finally {
@@ -39,7 +39,7 @@ function* signUpSaga({ payload } : { type: string, payload: SignUpRequestType })
       yield put(showLoader())
       const { data } = yield call(apiProvider.authentication.signUp, { payload })
       if (_.isNil(data)) return;
-      payload.navigate?.(ScreenRoutes.SignIn)
+      payload.navigate?.(PageRoutes.SignIn)
    } catch (e) {
       _.noop()
    } finally {

@@ -4,7 +4,7 @@ import actions from 'store/actions';
 import { push } from 'react-router-redux';
 import { put, takeLatest, call } from 'redux-saga/effects'
 import { adaptHomeScreenPosts, closeLoadingHomePosts, showLoadingHomePosts } from 'store/reducers/postsReducer';
-import { ScreenRoutes } from 'constants/index';
+import { PageRoutes } from 'constants/index';
 
 // worker Saga: will be fired on USER_FETCH_REQUESTED actions
 function* getHomePosts() : any {
@@ -13,7 +13,7 @@ function* getHomePosts() : any {
       const { data } = yield call(apiProvider.posts.getAll, {})
       if (_.isNil(data)) return;
       yield put(adaptHomeScreenPosts(data))
-      yield put(push(ScreenRoutes.Home))
+      yield put(push(PageRoutes.Home))
    } catch (e) {
       _.noop()
    } finally {

@@ -5,10 +5,10 @@ import actions from "store/actions";
 import { dispatch } from "store";
 import assetsPicker from "assets/assetsPicker";
 import { colors } from "constants/index";
-import { ScreenRoutes } from 'constants/index';
+import { PageRoutes } from 'constants/index';
 import { useNavigate } from "react-router-dom";
 
-const SignInScreen = () => {
+const SignInPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
@@ -28,7 +28,7 @@ const SignInScreen = () => {
     }))
   }
   const onPressSignUp = () => {
-    navigate(ScreenRoutes.SignUp)
+    navigate(PageRoutes.SignUp)
   }
 
   return (
@@ -128,4 +128,4 @@ const Logo = styled.img`
   border-radius: 10px;
 `
 
-export default SignInScreen;
+export default SignInPage;

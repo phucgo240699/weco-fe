@@ -1,11 +1,12 @@
 import React from 'react';
-import _ from 'lodash';
+import { Button } from 'antd';
+import { dispatch } from 'store';
 import actions from 'store/actions';
 import styled from 'styled-components';
 import useRootSelector from 'store/selectors';
-import VerticalPostItem from 'components/VerticalPostItem';
 import assetsPicker from 'assets/assetsPicker';
-import { dispatch } from 'store';
+import VerticalPostItem from 'components/VerticalPostItem';
+import RedoOutlinedIcon from '@ant-design/icons/RedoOutlined';
 
 interface Props {}
 const HomeScreen : React.FC<Props> = () => {
@@ -14,10 +15,8 @@ const HomeScreen : React.FC<Props> = () => {
   const isLoadingPosts = selectors.posts.homePosts.isLoading
 
   React.useEffect(() => {
-    if (_.isEmpty(posts)) {
-      fetchPosts()
-    }
-  }, [posts])
+    fetchPosts()
+  }, [])
 
   const fetchPosts = () => {
     dispatch(actions.posts.getHomePosts())
@@ -26,7 +25,7 @@ const HomeScreen : React.FC<Props> = () => {
   return (
     <Container>
       <Content>
-        <RefreshButton disabled={isLoadingPosts} onClick={fetchPosts}>Refresh</RefreshButton>
+        <Button style={{ alignSelf: 'flex-end' }} disabled={isLoadingPosts} onClick={fetchPosts} icon={<RedoOutlinedIcon />} />
         {
           isLoadingPosts && <LoadingPosts src={assetsPicker.images.loading} />
         }
@@ -48,14 +47,6 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-`
-
-const RefreshButton = styled.button`
-  width: 100px;
-  display: flex;
-  margin-top: 20px;
-  align-self: flex-end;
-  justify-content: center;
 `
 
 const Content = styled.div`

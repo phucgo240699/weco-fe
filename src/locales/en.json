@@ -14,6 +14,9 @@
       "signOut": "Sign out"
     }
   },
+  "profile": {
+    "myProfile": "My profile"
+  },
   "session": {
     "loading": "Loading"
   },

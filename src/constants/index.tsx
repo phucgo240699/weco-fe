@@ -1,6 +1,6 @@
 export const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-export enum ScreenRoutes {
+export enum PageRoutes {
   Home = '/',
   Profile = '/profile',
   SignIn = '/signIn',

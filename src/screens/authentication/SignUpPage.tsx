@@ -6,7 +6,7 @@ import { Button, Form, Input, Col, Row } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
 interface Props {}
-const SignUpScreen : React.FC<Props> = () => {
+const SignUpPage : React.FC<Props> = () => {
   const navigate = useNavigate();
   const onFormSubmit = (e: any) => {
     dispatch(actions.authentication.signUp({
@@ -74,4 +74,4 @@ const SignUpScreen : React.FC<Props> = () => {
 const Container = styled(Row)`
   height: 100%;
 `
-export default SignUpScreen;
+export default SignUpPage;

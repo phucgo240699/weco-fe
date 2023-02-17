@@ -11,20 +11,23 @@
       "clickToSignUp": "Nhấp vào đây để đăng ký"
     },
     "signOut": {
-      "signOut": "Sign out"
+      "signOut": "Đăng xuất"
     }
+  },
+  "profile": {
+    "myProfile": "Thông tin tài khoản"
   },
   "session": {
     "loading": "Đang tải"
   },
   "error": {
-    "internalServerError": "Internal server error"
+    "internalServerError": "Lỗi hệ thống máy chủ"
   },
   "backend": {
     "authentication": {
       "missingRefreshToken": "Thiếu refresh token",
       "expiredAccessToken": "Access token đã hết hạn",
-      "expiredRefreshToken": "Refresh token has been expired",
+      "expiredRefreshToken": "Refresh token hết hạn",
       "signIn": {
         "incorrectInfo": "Thông tin đăng nhập không chính xác",
         "hasNotVerifiedEmail": "Email chưa được xác thực"
