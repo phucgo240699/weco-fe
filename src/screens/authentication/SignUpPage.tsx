@@ -12,8 +12,7 @@ const SignUpPage : React.FC<Props> = () => {
     dispatch(actions.authentication.signUp({
       email: e.email,
       name: e.name,
-      password: e.password,
-      navigate: navigate
+      password: e.password
     }))
   }
     return (

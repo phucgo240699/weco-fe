@@ -23,8 +23,7 @@ const SignInPage = () => {
   const onPressSignIn = () => {
     dispatch(actions.authentication.signIn({
       email,
-      password,
-      navigate: navigate
+      password
     }))
   }
   const onPressSignUp = () => {

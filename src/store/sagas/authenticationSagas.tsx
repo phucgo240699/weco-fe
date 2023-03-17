@@ -7,6 +7,7 @@ import { all, call, put, takeLeading } from 'redux-saga/effects';
 import { SignInRequestType, SignUpRequestType } from 'types/authenticationTypes';
 import { clearAuthenticationReducer, updateAuth } from 'store/reducers/authenticationReducer';
 import { clearSessionReducer, closeLoader, showLoader } from 'store/reducers/sessionReducer';
+import { navigate } from 'navigation';
 
 function* signInSaga({ payload } : { type: string, payload: SignInRequestType }) : any {
    try {
@@ -14,7 +15,7 @@ function* signInSaga({ payload } : { type: string, payload: SignInRequestType })
       const { data } = yield call(apiProvider.authentication.signIn, { payload })
       if (_.isNil(data)) return;
       yield put(updateAuth(data))
-      payload.navigate?.(PageRoutes.Home)
+      navigate(PageRoutes.Home)
    } catch (e) {
       _.noop()
    } finally {
@@ -39,7 +40,7 @@ function* signUpSaga({ payload } : { type: string, payload: SignUpRequestType })
       yield put(showLoader())
       const { data } = yield call(apiProvider.authentication.signUp, { payload })
       if (_.isNil(data)) return;
-      payload.navigate?.(PageRoutes.SignIn)
+      navigate(PageRoutes.SignIn)
    } catch (e) {
       _.noop()
    } finally {

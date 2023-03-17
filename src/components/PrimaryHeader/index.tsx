@@ -4,15 +4,14 @@
 import styled from 'styled-components';
 import { PageRoutes } from 'constants/index';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 import { Button, Dropdown, MenuProps } from 'antd';
 import MenuOutlined from '@ant-design/icons/MenuOutlined';
+import { navigate } from 'navigation';
 
 interface Props {}
 
 const PrimaryHeader: React.FC<Props> = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const items: MenuProps['items'] = [
     {
       key: '0',

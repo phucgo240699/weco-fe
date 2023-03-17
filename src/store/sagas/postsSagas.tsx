@@ -13,7 +13,6 @@ function* getHomePosts() : any {
       const { data } = yield call(apiProvider.posts.getAll, {})
       if (_.isNil(data)) return;
       yield put(adaptHomeScreenPosts(data))
-      yield put(push(PageRoutes.Home))
    } catch (e) {
       _.noop()
    } finally {
