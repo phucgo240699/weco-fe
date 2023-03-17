@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom/client';
 import { PersistGate } from 'redux-persist/integration/react'
 import Loader from 'components/Loader';
-import 'antd/dist/antd.min.css';
+import 'antd/dist/reset.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

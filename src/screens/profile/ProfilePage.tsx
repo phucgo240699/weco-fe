@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button } from 'antd';
-import styled from 'styled-components';
 import { PageRoutes } from 'constants/index';
 import { useNavigate } from 'react-router-dom';
 import ArrowLeftOutlinedIcon from '@ant-design/icons/ArrowLeftOutlined';
@@ -15,7 +14,5 @@ const ProfilePage : React.FC<Props> = () => {
     <Button type='primary' icon={<ArrowLeftOutlinedIcon />} onClick={onPressBackToHome}>Back to Home</Button>
   )
 }
-
-const BackButton = styled.button``
 
 export default ProfilePage;
